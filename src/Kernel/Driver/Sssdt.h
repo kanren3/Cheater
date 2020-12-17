@@ -1,0 +1,26 @@
+#ifndef _SSSDT_H_
+#define _SSSDT_H_
+
+typedef struct _SYSTEM_SERVICE_DESCRIPTOR_TABLE
+{
+	PULONG64 ServiceTableBase;
+	PULONG ServiceCounterTableBase;
+	PULONG64 NumberOfServices;
+	PUCHAR ParamTableBase;
+} SYSTEM_SERVICE_DESCRIPTOR_TABLE, * PSYSTEM_SERVICE_DESCRIPTOR_TABLE;
+
+
+PSYSTEM_SERVICE_DESCRIPTOR_TABLE
+NTAPI
+GetSSSDTTable(
+	VOID
+);
+
+PVOID
+NTAPI
+GetSSSDTProcAddress64(
+	IN PSYSTEM_SERVICE_DESCRIPTOR_TABLE KeServiceDescriptorTableShadow,
+	IN ULONG64 Index
+);
+
+#endif
